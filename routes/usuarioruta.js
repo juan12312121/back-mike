@@ -1,5 +1,5 @@
 const express = require("express");
-const { login, register, jefeGrupo, checador, jefeCarrera, getJefesGrupo } = require("../controllers/controladorusuario");
+const { login, register, jefeGrupo, checador, jefeCarrera, getJefesGrupo,getChecadores } = require("../controllers/controladorusuario");
 const { verifyToken, authorizeRoles } = require("../middleware/authMiddleware");
 
 const router = express.Router();
@@ -15,6 +15,9 @@ router.get("/jefe-carrera", verifyToken, authorizeRoles("jefe de carrera"), jefe
 
 // Ruta para obtener todos los jefes de grupo
 router.get("/jefes-grupo", verifyToken, authorizeRoles("jefe de carrera"), getJefesGrupo);
+// Ruta para obtener todos los checadores
+router.get("/checadores", verifyToken, authorizeRoles("jefe de carrera"), getChecadores);
+
 
 
 module.exports = router;

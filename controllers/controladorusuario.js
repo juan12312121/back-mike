@@ -96,6 +96,22 @@ exports.getJefesGrupo = async (req, res) => {
   }
 };
 
+exports.getChecadores = async (req, res) => {
+  try {
+    const checadores = await User.findAll({ where: { role: "checador" } });
+
+    if (checadores.length === 0) {
+      return res.status(404).json({ message: "No hay checadores registrados" });
+    }
+
+    res.status(200).json(checadores);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al obtener los checadores" });
+  }
+};
+
+
 
 // Rutas específicas por rol
 exports.jefeGrupo = (req, res) => {

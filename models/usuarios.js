@@ -28,11 +28,11 @@ const User = sequelize.define(
     },
     carrera: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     grupo: {
       type: DataTypes.STRING,
-      allowNull: false,  // Si lo deseas opcional, cambia a true
+      allowNull: true,  // Si lo deseas opcional, cambia a true
     },
   },
   {
